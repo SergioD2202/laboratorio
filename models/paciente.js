@@ -9,7 +9,7 @@ class Paciente {
         let classnames = "shadow p-3 m-5 rounded w-50 bg-light"
 
         return `<div class="${classnames}">
-        <h4>${this.req.nombre_paciente}</h4>
+        <h4>${this.req.nombre}</h4>
 
         <div class="container">
             <div class="row">
