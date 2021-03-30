@@ -30,13 +30,4 @@ class Paciente {
 }
 
 
-const test = document.querySelector(".test")
-
-const ptest = {
-    nombre_paciente:"Tito",
-    edad:18,
-    sexo:"M",
-    tipo_sangre:"O-"
-}
-
-test.innerHTML=new Paciente(ptest).build()
+export {Paciente}

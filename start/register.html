@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <title>Ingresar</title>
+    <title>Registrarse</title>
 </head>
 <body>
     <script src="operation.js"></script>
@@ -16,34 +16,35 @@
         <h1>Laboratorio Mendirez</h1>
 
         <div class="mx-auto shadow p-3 m-5 rounded w-50 text-center bg-light">
-            <h2>Login</h2>
-            <p>ingrese sus datos para entrar al blog.</p>
+            <h2>Registro</h2>
+            <p>Por favor llene los datos para crear una cuenta.</p>
             <form>
-
                 <div class="form-group">
                     <label>Correo</label>
-                    <input type="text" name="username" class="form-control" placeholder="Su correo">
-                    <span class="invalid-feedback">Ingrese su correo</span>
-                </div>
+                    <input type="text" name="username" class="form-control" placeholder="Su Correo">
+                    <span class="invalid-feedback"></span>
+                </div>    
                 <div class="form-group">
-
                     <label>Contraseña</label>
-                    <input type="password" name="password" class="form-control" placeholder="Su contraseña">
-                    <span class="invalid-feedback">Ingrese su contraseña</span>
+                    <input type="password" name="password" class="form-control" placeholder="Contraseña">
+                    <span class="invalid-feedback"></span>
                 </div>
-
                 <div class="form-group">
-                    <input type="button" class="btn btn-primary" value="Ingresar">
+                    <label>Confirmar contraseña</label>
+                    <input type="password" name="confirm_password" class="form-control" placeholder="Confirme su contraseña">
+                    <span class="invalid-feedback"></span>
+                </div>
+                <div class="form-group">
+                    <input type="button" class="btn btn-primary" value="Registrarse">
+                    <input type="reset" class="btn btn-secondary ml-2" value="Reset">
                 </div>
 
-                <p>¿No tienes una cuenta? <a href="register.html">Regístrate</a>.</p>
+                <p>¿Ya tienes una cuenta? <a href="login.html">Ingresa</a>.</p>
            </form>
         </div>
         
         
     </div>
-
-
     
 </body>
 </html>

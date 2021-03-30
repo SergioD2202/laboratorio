@@ -27,7 +27,7 @@ class Examen{
                 break
         }
 
-        const structure = `<div class="${classnames}" id=${this.req.id}>
+        const structure = `<div class="${classnames}" id=${this.req.id_examen}>
         <div class="container">
             <div class="row">
                 <div class="col"><h4>${this.req.tipo_examen}</h4></div>
@@ -56,17 +56,5 @@ class Examen{
 }
 
 
-
-
-
-const ptest = {
-    id:1,
-    tipo_examen:"Glicemia",
-    descripcion:"Examen para verificar los niveles de azucar en ayunas y post-pandrial",
-    estado:"Pendiente"
-}
-
-const a = new Examen(ptest)
-
-a.build()
+export {Examen}
 
