@@ -7,6 +7,14 @@ if (mysqli_connect_errno()) {
 }
 
 $correo=$_POST['correo'];
+$verif = "0";
+
+if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+  $verif = "Invalid";
+  echo $verif;
+  exit;
+}
+
 
 $check =  "SELECT correo FROM user;";
 
@@ -21,8 +29,6 @@ if (!$query) {
     while($r = mysqli_fetch_assoc($query)) {
         $rows[] = $r;
     }
-
-    $verif = "0";
 
     foreach($rows as $row){
       if(in_array($correo,$row)) $verif="1";
