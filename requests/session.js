@@ -13,13 +13,25 @@ const checkSession = async (url_php) =>{
     }
 }
 
+const checkSessionInside = async (url_php,url_goback) =>{
+    try {
+        const emptyfd = new FormData()
+
+        const check = await sendData(url_php,emptyfd)
+
+        if(check.charAt(0)==="0") window.location.href = url_goback
+        
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 const logIn = async (fd) =>{
 
     try {
         const login = await sendData("../requests/sessionstart.php",fd)
 
         if(login.charAt(0)==="1") window.location.href ="../pacientes/list.html"
-        
     } catch (error) {
         console.error(error)
     }
