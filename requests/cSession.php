@@ -3,8 +3,10 @@ session_start();
  
 
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: pacientes/list.html");
+    echo "1";
     exit;
 }
-header("location:start/login.html");
+
+echo "0";
+
 ?>

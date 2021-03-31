@@ -1,5 +1,7 @@
-import {fetchData} from "../requests/get.js"
 import {sendData} from "../requests/post.js"
+import {checkSession} from "../requests/session.js"
+
+checkSession("../requests/cSession.php")
 
 
 document.querySelector(".register").addEventListener("click",function(){
