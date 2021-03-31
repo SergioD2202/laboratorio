@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>test</title>
+</head>
+<body>
+    <div class="test"></div>
+
+    <div class="mx-auto shadow p-3 m-5 rounded w-50 text-center bg-light">
+        <h2>Registro</h2>
+        <p>Por favor llene los datos para crear una cuenta.</p>
+        <form>
+            <div class="form-group">
+                <label>Correo</label>
+                <input type="text" name="username" class="form-control mail" placeholder="Su Correo">
+                <span class="invalid-feedback"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Contraseña</label>
+                <input type="password" name="password" class="form-control pw" placeholder="Contraseña">
+                <span class="invalid-feedback"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="button" class="btn btn-primary register" value="Registrarse">
+                <input type="reset" class="btn btn-secondary ml-2" value="Reset">
+            </div>
+
+            <p>¿Ya tienes una cuenta? <a href="login.html">Ingresa</a>.</p>
+        </form>
+    </div>
+
+    <div class="mx-auto shadow p-3 m-5 rounded w-50 text-center bg-light test-post">
+
+    </div>
+    
+
+    <script type="module">
+        import {fetchData} from "./requests/get.js"
+        import {sendData} from "./requests/post.js"
+        const div = document.querySelector(".test")
+
+        const f = async (url_api) =>{
+            try {
+                const data = await fetchData(url_api)
+                div.innerHTML+=data[0].correo
+            } catch (error) {
+                console.error(error)
+            }
+        }
+
+        f("example.php")
+
+        const s = async (url_api) =>{
+            try {
+                const output = document.querySelector(".test-post")
+                const fd = new FormData()
+                const mail = document.querySelector(".mail")
+                const pass = document.querySelector(".pw")
+                fd.append("mail",mail.value)
+                fd.append("password",pass.value)
+
+                const send = await sendData(url_api,fd)
+
+                output.innerHTML+=send.slice(0,13)
+
+            } catch (error) {
+                console.error(error)
+            }
+        }
+
+        const btn = document.querySelector(".register")
+
+        btn.addEventListener('click',function(){
+            s("sendexp.php")
+        })
+        
+        
+    </script>
+</body>
+</html>

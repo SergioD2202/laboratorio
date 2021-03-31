@@ -8,8 +8,9 @@
     <title>Registrarse</title>
 </head>
 <body>
-    <script src="operation.js"></script>
-
+    
+   
+    
     <div class="mx-auto shadow p-3 m-5 rounded w-50 text-center">
         <img src="https://i.pinimg.com/236x/9b/ee/e4/9beee4ede91c14d1f5adab5729c0af0f.jpg" alt="logo">
         
@@ -21,21 +22,18 @@
             <form>
                 <div class="form-group">
                     <label>Correo</label>
-                    <input type="text" name="username" class="form-control" placeholder="Su Correo">
-                    <span class="invalid-feedback"></span>
+                    <input type="email" class="form-control mail" placeholder="Su Correo">
                 </div>    
                 <div class="form-group">
                     <label>Contraseña</label>
-                    <input type="password" name="password" class="form-control" placeholder="Contraseña">
-                    <span class="invalid-feedback"></span>
+                    <input type="password" class="form-control pass" placeholder="Contraseña">
                 </div>
                 <div class="form-group">
                     <label>Confirmar contraseña</label>
-                    <input type="password" name="confirm_password" class="form-control" placeholder="Confirme su contraseña">
-                    <span class="invalid-feedback"></span>
+                    <input type="password" class="form-control cpass" placeholder="Confirme su contraseña">
                 </div>
                 <div class="form-group">
-                    <input type="button" class="btn btn-primary" value="Registrarse">
+                    <input type="button" class="btn btn-primary register" value="Registrarse">
                     <input type="reset" class="btn btn-secondary ml-2" value="Reset">
                 </div>
 
@@ -45,6 +43,8 @@
         
         
     </div>
+
+    <script type="module" src="script.js"></script>
     
 </body>
 </html>
