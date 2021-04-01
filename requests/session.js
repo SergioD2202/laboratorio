@@ -52,4 +52,4 @@ const logOut = async () =>{
 
 }
 
-export {checkSession,logIn,logOut}
+export {checkSession,logIn,logOut, checkSessionInside}

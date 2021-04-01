@@ -16,7 +16,7 @@ class Paciente {
                 <div class="col-6">
                 Edad: ${this.req.edad} <br>
                 Sexo: ${this.req.sexo} <br>
-                Tipo de Sangre: ${this.req.tipo_sangre}
+                Tipo de Sangre: ${this.req.tipo_sangre} <br>
                 </div>
                 <div class="col"><a href="" class="btn btn-outline-primary">Entrar</a></div>
                 <div class="col"><a href="" class="btn btn-outline-info">Modificar</a></div>
