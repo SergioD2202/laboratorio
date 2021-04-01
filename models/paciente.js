@@ -1,14 +1,14 @@
 
 class Paciente {
-    constructor(req){
+    constructor(req,count){
         this.req = req
+        this.count = count
 
     }
 
     build(){
-        let classnames = "shadow p-3 m-5 rounded w-50 bg-light"
 
-        return `<div class="${classnames}">
+        return `
         <h4>${this.req.nombre}</h4>
 
         <div class="container">
@@ -18,13 +18,11 @@ class Paciente {
                 Sexo: ${this.req.sexo} <br>
                 Tipo de Sangre: ${this.req.tipo_sangre} <br>
                 </div>
-                <div class="col"><a href="" class="btn btn-outline-primary">Entrar</a></div>
-                <div class="col"><a href="" class="btn btn-outline-info">Modificar</a></div>
-                <div class="col"><a href="" class="btn btn-outline-danger">Borrar</a></div>
+                <div class="col"><input type="button"  class="btn btn-outline-primary id-${this.count}-enter" value="Entrar"></div>
+                <div class="col"><input type="button" class="btn btn-outline-danger id-${this.count}-delete" value="Borrar"></div>
             </div>
         </div>
-
-    </div>`
+        `
 
     }
 }
