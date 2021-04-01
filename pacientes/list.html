@@ -19,6 +19,41 @@
         <input type="button" value="Crear un Nuevo Paciente" class="btn btn-outline-primary">
     </div>
 
+    <div  class="mx-auto shadow p-3 m-5 rounded w-50 text-center">
+        <h1>Cree un nuevo Paciente</h1>
+
+        <form>
+            <input type="text" name="nombre" placeholder="nombre" class="form-control w-50">
+            <input type="number" name="edad" placeholder="edad" class="form-control w-50">
+
+            
+                <select id="sexo" class="form-control w-50">
+                  <option selected>Sexo</option>
+                  <option>M</option>
+                  <option>F</option>
+                </select>
+              
+
+            
+                <select id="tiposangre" class="form-control w-50">
+                  <option selected>Tipo de Sangre</option>
+                  <option>O-</option>
+                  <option>O+</option>
+                  <option>A-</option>
+                  <option>A+</option>
+                  <option>B-</option>
+                  <option>B+</option>
+                  <option>AB-</option>
+                  <option>AB+</option>
+                </select>
+            
+
+            <input type="button" value="Crear un Nuevo Paciente" class="btn btn-outline-primary">
+            <input type="reset" value="Resetear los campos" class="btn btn-outline-warning">
+        </form>  
+
+    </div>
+
     <div class="mx-auto shadow p-3 m-5 rounded w-50 text-center bg-info list"></div>
 
     <script type="module" src="admin.js"></script>

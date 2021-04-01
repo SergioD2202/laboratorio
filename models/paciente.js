@@ -25,6 +25,20 @@ class Paciente {
         `
 
     }
+
+    readOnly(){
+        return `
+        <h4>${this.req.nombre}</h4>
+
+        <div class="container">
+            <div class="row">
+                <div class="col"><h4>Edad: ${this.req.edad}</h4></div>
+                <div class="col"><h4>Sexo: ${this.req.sexo}</h4></div>
+                <div class="col"><h4>Tipo de Sangre: ${this.req.tipo_sangre}</h4></div>
+            </div>
+        </div>
+        `
+    }
 }
 
 

@@ -10,11 +10,30 @@ var pacientes = 0
 document.addEventListener("click",async function(e){
     try {
         const list = await fetchData("plist.php")
+        const fd = new FormData()
 
     for(let i=1;i<=list.length;i++){
-        if(e.target.classList.contains("id-"+i+"-enter")) alert("entrar "+i)
+        if(e.target.classList.contains("id-"+i+"-enter")) {
+            fd.append("id-p",list[i-1].id_paciente)
+            fd.append("name-p",list[i-1].nombre)
 
-        if(e.target.classList.contains("id-"+i+"-delete")) alert("borrar "+i)
+            const post = await sendData("savepatient.php",fd)
+
+            if(post=="1") window.location.href="current.html"
+            else alert("oops")
+        }
+
+        if(e.target.classList.contains("id-"+i+"-delete")) {
+            if(confirm("¿Está seguro que quiere borrar este paciente?")){
+                fd.append("id-p",list[i-1].id_paciente)
+
+                const deleted = await sendData("deletepatient.php",fd)
+
+                if(deleted.charAt(0)=="1") window.location.href="list.html"
+
+                else alert("oops")
+            }
+        }
     }
     
     } catch (error) {
