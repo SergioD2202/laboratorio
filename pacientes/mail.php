@@ -1,22 +1,65 @@
 <?php
 //Testing
 
-/* use PHPMailer\PHPMailer\PHPMailer;
+session_start();
+
+use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require_once('../vendor/autoload.php');
 require_once('../fpdf/fpdf.php');
+require_once('../connection.php');
 
-$pdf = new FPDF();
+class PDF extends FPDF
+{
+// Cabecera de página
+function Header()
+{
+    // Arial bold 15
+    $this->SetFont('Arial','B',18);
+    // Movernos a la derecha
+    $this->Cell(50);
+    // Título
+    $this->Cell(70,10,'Reporte del paciente',0,0,'C');
+    // Salto de línea
+    $this->Ln(20);
+}
+
+// Pie de página
+function Footer()
+{
+    // Posición: a 1,5 cm del final
+    $this->SetY(-15);
+    // Arial italic 8
+    $this->SetFont('Arial','I',8);
+    // Número de página
+    $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
+}
+}
+
+$test = "SELECT * FROM examen WHERE estado='Realizado' AND id_paciente=".$_SESSION['id-p'];
+
+$query = $link->query($test);
+
+$count = 1;
+
+$pdf = new PDF();
 $pdf->AddPage();
+$pdf->AliasNbPages();
 $pdf->SetFont('Arial','B',16);
-for ($x = 0; $x <= 10; $x++) {
-    $pdf->Cell(40,10,"Hola, Mundo!");
-    $pdf->Line(10);
-  }
-$pdf->Output(); */
+
+while($row = $query->fetch_assoc()){
+  $pdf->Cell(120,10,"Examen Numero ".$count,1,1,'C',0);
+  $pdf->Cell(120,10, $row['tipo_examen'],1,1,'C',0);
+  $pdf->Cell(120,10, $row['descripcion'],1,1,'C',0);
+  $pdf->Cell(120,10, $row['estado'],1,1,'C',0);
+  $pdf->Cell(120,10,' ',0,1,'C',0);
+  $count=$count+1;
+}
+  
+$pdfdoc = $pdf->Output('','S'); 
 
 
-/*$mail= new PHPMailer();
+$mail= new PHPMailer();
 
 $mail->isSMTP();
 
@@ -36,13 +79,17 @@ $mail->Password = 'phpmailer456';
 
 $mail->SetFrom('no-reply@gmail.com');
 
-$mail->Subject = "Prueba";
+$mail->Subject = "Laboratorio Mendirez:Reporte del Paciente";
 
-$mail->Body = "Email de prueba bro";
+$mail->Body = "Buenas tardes, en el correo tiene adjunto el reporte más reciente de los examenes realizados";
 
-$mail->AddAddress('sergioalejandrods1609@gmail.com');
+$mail->addStringAttachment($pdfdoc, 'reporte.pdf');
 
-$mail->Send()*/
+$mail->AddAddress($_SESSION['correo']);
+
+$mail->Send();
+
+echo '1';
 
 
 ?>

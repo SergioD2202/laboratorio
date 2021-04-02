@@ -193,3 +193,20 @@ const list = async ()=>{
 }
 
 list()
+
+
+const sendMail= async ()=>{
+    try {
+        const emptyfd= new FormData()
+        const req = await sendData("mail.php",emptyfd)
+        if(req==="1") alert("¡Correo Enviado! , revise su inbox para ver el reporte")
+
+        else alert("oops")
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+document.getElementById("pdf").addEventListener("click",function(){
+    sendMail()
+})
