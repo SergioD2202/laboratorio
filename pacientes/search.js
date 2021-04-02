@@ -4,6 +4,9 @@ import { fetchData } from "../requests/get.js"
 import { checkSessionInside as checkSession } from "../requests/session.js"
 import { sendData } from "../requests/post.js"
 
+var sexo 
+var sangre
+
 checkSession("../requests/cSession.php","../start/login.html")
 
 const div = document.getElementById("current")
@@ -55,6 +58,58 @@ document.addEventListener("click",async function(e){
     } catch (error) {
         console.error(error)
     }
+})
+
+document.getElementById('sexo').addEventListener('change', function() {
+    sexo = this.value
+  });
+
+document.getElementById('tiposangre').addEventListener('change', function() {
+    sangre = this.value
+  });
+
+document.querySelector(".act").addEventListener("click", async function(){
+    try {
+        const name = document.querySelector(".n-nombre")
+        const edad = document.querySelector(".n-edad")
+        const fd = new FormData()
+
+        if(name.value=="" || edad.value=="" || !sexo || !sangre || sexo=="Sexo" || sangre=="Tipo de Sangre") {
+            alert("por favor llene todos los campos")
+            return
+        }
+
+        if(Number(edad.value)<=0){
+            alert("Error,edad debe ser positivo")
+            return
+        }
+
+        if(!name.value.match(/^[A-Za-z]+$/)){
+            alert("Solo se permiten letras del alfabeto en nombre")
+            return
+        }
+
+        fd.append("n-name",name.value)
+        fd.append("n-edad",edad.value)
+        fd.append("n-sexo",sexo)
+        fd.append("n-sangre",sangre)
+
+        const post = await sendData("actpatient.php",fd)
+
+        if(post.charAt(0)==="1"){
+            alert("Paciente actualizado!")
+            window.location.reload()
+        }
+
+        else alert("oops") 
+        
+    } catch (error) {
+
+        console.error(error)
+        
+    }
+
+    
 })
 
 const show = async () =>{
