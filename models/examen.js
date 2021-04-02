@@ -6,24 +6,24 @@ const type_enums = {
 
 
 class Examen{
-    constructor(req){
+    constructor(req,counter){
         this.req=req
+        this.counter=counter
     }
 
       build(){
-        const test = document.querySelector(".test")
         let classnames = "shadow p-3 m-5 rounded w-50"
         let changebtn
 
         switch(this.req.estado){
             case type_enums.PENDIENTE:
                 classnames = classnames+" bg-warning"
-                changebtn = '<input type="button" class="btn btn-outline-success change" value="Anotar como realizado" onclick="dosomt()">'
+                changebtn = `<input type="button" class="btn btn-outline-success change-${this.counter}" value="Anotar como realizado">`
                 break
 
             case type_enums.REALIZADO:
                 classnames = classnames+" bg-success"
-                changebtn = '<input type="button" class="btn btn-outline-warning change" value="Cambiar a Pendiente" onclick="dosomt()">'
+                changebtn = `<input type="button" class="btn btn-outline-warning change-${this.counter}" value="Cambiar a Pendiente">`
                 break
         }
 
@@ -41,16 +41,12 @@ class Examen{
                 ${this.req.descripcion}
                 </div>
                 <div class="col">${changebtn}</div>
-                <div class="col"><a href="" class="btn btn-outline-danger">Borrar</a></div>
+                <div class="col"><a href="" class="btn btn-outline-danger id-delete-${this.counter}">Borrar</a></div>
             </div>
         </div>
 
     </div>`
-
-        test.innerHTML+= structure
-
-
-        
+        return structure
 
     }
 }
