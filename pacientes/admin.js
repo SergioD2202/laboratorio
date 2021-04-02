@@ -29,7 +29,7 @@ document.addEventListener("click",async function(e){
 
                 const deleted = await sendData("deletepatient.php",fd)
 
-                if(deleted.charAt(0)=="1") window.location.href="list.html"
+                if(deleted.charAt(0)=="1") window.location.reload()
 
                 else alert("oops")
             }
@@ -82,7 +82,7 @@ document.querySelector(".crear").addEventListener("click", async function(){
 
         if(post.charAt(0)==="1"){
             alert("Paciente creado!")
-            window.location.href="list.html"
+            window.location.href.reload()
         }
 
         else alert("oops") 

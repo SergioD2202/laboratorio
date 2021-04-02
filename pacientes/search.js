@@ -15,9 +15,41 @@ document.addEventListener("click",async function(e){
         const fd = new FormData()
 
         for(let i=1;i<=list.length;i++){
-            if(e.target.classList.contains("change-"+i)) alert("Cambio-"+i)
+            if(e.target.classList.contains("change-"+i)){
+                if(list[i-1].estado=="Pendiente") {
+                    fd.append("id-e",list[i-1].id_examen)
+                    fd.append("estado","Realizado")
 
-            if(e.target.classList.contains("id-delete-"+i)) alert("Borrar-"+i)
+                    const change = await sendData("changestate.php",fd)
+
+                    if(change) window.location.reload()
+
+                    else alert("oops")
+                }
+                else {
+                    fd.append("id-e",list[i-1].id_examen)
+                    fd.append("estado","Pendiente")
+
+                    const change = await sendData("changestate.php",fd)
+
+                    if(change) window.location.reload()
+
+                    else alert("oops")
+
+                }
+            }
+
+            if(e.target.classList.contains("id-delete-"+i)) {
+                if(confirm("¿Está seguro que quiere borrar este examen?")){
+                    fd.append("id-e",list[i-1].id_examen)
+    
+                    const deleted = await sendData("deleteexam.php",fd)
+    
+                    if(deleted.charAt(0)=="1") window.location.reload()
+    
+                    else alert("oops")
+                }
+            }
 
         }
     } catch (error) {

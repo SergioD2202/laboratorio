@@ -10,6 +10,62 @@
 <body>
     <div class="mx-auto shadow p-3 m-5 rounded w-50 text-center bg-info" id="current"></div>
 
+    <div  class="mx-auto shadow p-3 m-5 rounded w-50 text-center">
+        <h1>Modificar el paciente</h1>
+
+        <form>
+            <input type="text" name="nombre" placeholder="nombre" class="form-control w-50 n-nombre">
+            <input type="number" name="edad" placeholder="edad" class="form-control w-50 n-edad">
+
+            
+                <select id="sexo" class="form-control w-50">
+                  <option selected>Sexo</option>
+                  <option>M</option>
+                  <option>F</option>
+                </select>
+              
+
+            
+                <select id="tiposangre" class="form-control w-50">
+                  <option selected>Tipo de Sangre</option>
+                  <option>O-</option>
+                  <option>O+</option>
+                  <option>A-</option>
+                  <option>A+</option>
+                  <option>B-</option>
+                  <option>B+</option>
+                  <option>AB-</option>
+                  <option>AB+</option>
+                </select>
+            
+
+            <input type="button" value="Crear un Nuevo Paciente" class="btn btn-outline-primary crear">
+            <input type="reset" value="Resetear los campos" class="btn btn-outline-warning">
+        </form>  
+
+    </div>
+
+    <div  class="mx-auto shadow p-3 m-5 rounded w-50 text-center">
+        <h1>Cree un nuevo Examen</h1>
+
+        <form>
+            <input type="text" name="tipo" placeholder="tipo de examen" class="form-control w-50 n-tipo">
+            <input type="text" name="descripcion" placeholder="descripcion" class="form-control w-50 n-des">
+
+            
+                <select id="sexo" class="form-control w-50">
+                  <option selected>Estado</option>
+                  <option>Pendiente</option>
+                  <option>Realizado</option>
+                </select>
+            
+
+            <input type="button" value="Crear un Nuevo Examen" class="btn btn-outline-primary crear">
+            <input type="reset" value="Resetear los campos" class="btn btn-outline-warning">
+        </form>  
+
+    </div>
+
     <div class="mx-auto shadow p-3 m-5 rounded w-50 text-center bg-light" id="list"></div>
 
     <script type="module" src="search.js"></script>
