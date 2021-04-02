@@ -6,6 +6,7 @@ import { sendData } from "../requests/post.js"
 
 var sexo 
 var sangre
+var estado
 
 checkSession("../requests/cSession.php","../start/login.html")
 
@@ -60,6 +61,10 @@ document.addEventListener("click",async function(e){
     }
 })
 
+document.getElementById('estado').addEventListener('change', function() {
+    estado = this.value
+  });
+
 document.getElementById('sexo').addEventListener('change', function() {
     sexo = this.value
   });
@@ -98,6 +103,44 @@ document.querySelector(".act").addEventListener("click", async function(){
 
         if(post.charAt(0)==="1"){
             alert("Paciente actualizado!")
+            window.location.reload()
+        }
+
+        else alert("oops") 
+        
+    } catch (error) {
+
+        console.error(error)
+        
+    }
+
+    
+})
+
+document.querySelector(".crear").addEventListener("click", async function(){
+    try {
+        const tipo = document.querySelector(".n-tipo")
+        const des = document.querySelector(".n-des")
+        const fd = new FormData()
+
+        if(tipo.value=="" || des.value=="" || !estado || sexo=="Estado") {
+            alert("por favor llene todos los campos")
+            return
+        }
+
+        if(!tipo.value.match(/^[A-Za-z]+$/)){
+            alert("Solo se permiten letras del alfabeto en tipo de examen")
+            return
+        }
+
+        fd.append("n-tipo",tipo.value)
+        fd.append("n-des",des.value)
+        fd.append("n-estado",estado)
+
+        const post = await sendData("createexam.php",fd)
+
+        if(post.charAt(0)==="1"){
+            alert("Examen creado!")
             window.location.reload()
         }
 
