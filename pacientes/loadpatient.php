@@ -23,7 +23,7 @@ if (!$query) {
     
     while($r = mysqli_fetch_assoc($query)) {
         $rows[] = $r;
-    }
+    } 
    
 
     echo json_encode($rows);

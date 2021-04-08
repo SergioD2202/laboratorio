@@ -10,6 +10,7 @@ const fetchData = (url_api) => {
 
                 xhr.status===200? resolve(xhr.response):reject(new Error('Error',url_api))
                     
+                if(xhr.status===500) window.location.reload()
                 
             }
         })

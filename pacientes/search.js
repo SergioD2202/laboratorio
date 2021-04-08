@@ -167,7 +167,7 @@ const show = async () =>{
     }
 }
 
-show()
+show() 
 
 const list = async ()=>{
     try {
